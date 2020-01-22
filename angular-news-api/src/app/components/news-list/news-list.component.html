@@ -1,0 +1,10 @@
+<div class="app-news-list">
+    <div class="app-news-list-content">
+        <app-news-card *ngFor="let news of newsData.news" [news]="news" (deleteNewsEventEmitter)="deleteNews($event)">
+        </app-news-card>
+        <span *ngIf="!hasNewsToShow()">No news to show</span>
+    </div>
+    <div class="app-news-list-load-more">
+        <button type="button" *ngIf="canLoadMoreNews()" (click)="loadMoreNews()">Load More</button>
+    </div>
+</div>

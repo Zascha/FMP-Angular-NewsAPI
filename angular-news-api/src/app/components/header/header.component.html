@@ -1,0 +1,13 @@
+<div class="app-header">
+    <div class="app-header-top-row">
+        HEADER TOP ROW
+        <button (click)="logInOrOut()">
+            <span>{{isUserAuthorized() ? 'Log out' : 'Log in'}}</span>
+        </button>
+    </div>
+    <div class="app-header-bottom-row">
+       <span>-------------------------</span>
+       {{pageTitle}}
+       <span>-------------------------</span>
+    </div> 
+</div>

@@ -1,0 +1,16 @@
+<div class="app-filter">
+    
+    <form [formGroup]="filterForm" class="app-filter-form">
+        <select formControlName="filterSources" (change)="notifySearchParamsHaveChanged()">
+            <option *ngFor="let source of newsSources" value={{source.id}}>{{source.name}}</option>
+        </select>
+
+        <input placeholder="Enter your text" formControlName="filterValue" />
+        <button type="button" (click)="notifySearchParamsHaveChanged()">Filter</button>
+
+        <input *ngIf="canFilterByAuthored()" type="checkbox" formControlName="filterAuthored" (change)="notifySearchParamsHaveChanged()" checked=false> 
+        <span *ngIf="canFilterByAuthored()"> Only Authored </span>
+
+        <button>Add Article</button>
+    </form>
+</div>

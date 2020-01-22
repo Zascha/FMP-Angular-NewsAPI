@@ -1,0 +1,5 @@
+<div>
+    - {{news.id}}: {{news.title}} &nbsp;&nbsp;
+    <a routerLink="/edit/{{news.id}}">Edit</a> &nbsp; | &nbsp;
+    <a href (click)="deleteNews()" *ngIf="isAuthoredNews()">Delete</a>
+</div>
