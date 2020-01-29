@@ -7,23 +7,27 @@ import { Constants } from '../constans';
 export class UserService {
   private currentUserId: number;
 
-  constructor(private constants: Constants) { 
+  constructor(private constants: Constants) {
     this.currentUserId = this.constants.NotAuthorizedUserId;
   }
 
-  logIn(){
+  logIn() {
     this.currentUserId = 1;
   }
 
-  logOut(){
+  logOut() {
     this.currentUserId = this.constants.NotAuthorizedUserId;
   }
 
-  getCurrentUserId(){
+  getCurrentUserId() {
     return this.currentUserId;
   }
 
-  isAnyUserAuthorized(){
-    return this.currentUserId != this.constants.NotAuthorizedUserId;
+  getCurrentUserFullName() {
+    return this.isAnyUserAuthorized() ? this.constants.DefaultAuthoredUserFullName : null;
+  }
+
+  isAnyUserAuthorized() {
+    return this.currentUserId !== this.constants.NotAuthorizedUserId;
   }
 }

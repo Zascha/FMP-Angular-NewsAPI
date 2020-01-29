@@ -25,7 +25,8 @@ export class FilterComponent implements OnInit {
 
   newsSources: NewsSource[];
 
-  constructor(private headerTitleService: HeaderTitleService,
+  constructor(
+    private headerTitleService: HeaderTitleService,
     private newsSourceProviderService: NewsSourceProviderService,
     private searchParamsService: SearchParamsService,
     private userService: UserService,
@@ -34,28 +35,28 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this.newsSources = this.newsSourceProviderService.getNewsSources();
-    this.headerTitleService.setTitle("Home page");
+    this.headerTitleService.setTitle('Live News Column');
 
     this.notifySearchParamsHaveChanged();
   }
 
-  canFilterByAuthored(){
+  isAuthoredChecked() {
+    return this.filterForm.value.filterAuthored as boolean;
+  }
+
+  canFilterByAuthored() {
     return this.userService.isAnyUserAuthorized();
   }
 
   notifySearchParamsHaveChanged() {
-    console.log(this.filterForm);
-
-    var fiterValues = this.filterForm.value;
-
-    let searchParams: SearchParams = {
-      source: fiterValues["filterSources"],
-      searchValue: fiterValues["filterValue"],
-      authored: fiterValues["filterAuthored"],      
+    const fiterValues = this.filterForm.value;
+    const searchParams: SearchParams = {
+      source: fiterValues.filterSources,
+      searchValue: fiterValues.filterValue,
+      authored: fiterValues.filterAuthored,
       perPage: this.constants.DefaultPerPageItemsNumber,
       page: 1
     };
-
     this.searchParamsService.setNewsSearhParams(searchParams);
   }
 }

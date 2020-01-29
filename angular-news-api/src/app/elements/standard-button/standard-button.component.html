@@ -1,0 +1,20 @@
+<button (click)="onClick()">
+    <span>{{text}}</span>
+</button>
+
+<!-- Usage
+
+-> IN HTML
+
+<app-standard-button 
+    text="Some text" 
+    clickAction="someAction" 
+    (buttonClicked)="clickedAction($event)">
+</app-standard-button>
+
+-> IN *.ts
+
+someAction = function(){ ... }
+clickedAction($event){ ... } 
+
+-->

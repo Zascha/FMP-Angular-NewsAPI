@@ -1,0 +1,77 @@
+@import "../../constants.less";
+
+.app-news-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 2px;
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  position: relative;
+
+  &__image {
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    margin-right: 20px;
+
+    img {
+      height: 100%;
+      width: 355px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__additional-data {
+    display: flex;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  &__chars-count,
+  &__time {
+    color: @dark-green;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  &__author, &__read-link {
+    color: @green;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__description {
+    margin: 20px 0;
+  }
+
+  &__read-link{
+    color: @blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &__buttons{
+    display: flex;
+    position: absolute; 
+    bottom: 20px;
+    right: 20px;
+
+    a{
+        background-color: @dark-green;
+        border-radius: 5px;
+        color: @white;
+        cursor: pointer;
+        margin-right: 10px;
+        text-decoration: none;
+        padding: 7px 15px;
+
+        &:focus, &:hover, &:active{
+            text-decoration: none;
+        }
+    }
+  }
+}

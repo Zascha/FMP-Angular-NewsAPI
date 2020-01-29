@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +19,11 @@ import { NewsCardComponent } from './components/news-card/news-card.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { Constants } from './constans';
-import { NewsEditFormComponent } from './components/news-edit-form/news-edit-form.component';
+import { UserService } from './services/user.service';
+import { LocalNewsService } from './services/local-news.service';
+import { CharsCountPipe } from './pipes/chars-count.pipe';
+import { CommonModule } from '@angular/common';
+import { StandardButtonComponent } from './elements/standard-button/standard-button.component';
 
 @NgModule({
   declarations: [
@@ -31,18 +37,30 @@ import { NewsEditFormComponent } from './components/news-edit-form/news-edit-for
     NewsCardComponent,
     FilterComponent,
     NewsListComponent,
-    NewsEditFormComponent
+    CharsCountPipe,
+    StandardButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     HeaderTitleService,
-    Constants
+    Constants,
+    UserService,
+    LocalNewsService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StandardButtonComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(private injector: Injector) {
+    const button = createCustomElement(StandardButtonComponent, { injector });
+    customElements.define('app-standard-button', button);
+  }
+}

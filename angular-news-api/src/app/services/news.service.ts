@@ -16,55 +16,53 @@ export class NewsService {
   constructor(private httpClient: HttpClient) { }
 
   getNewsList(searchParams: SearchParams) {
-    var newsResponse = new NewsResponse();
-
+    const newsResponse = new NewsResponse();
     this.httpClient.get(this.formRequestUrl(searchParams))
       .subscribe(data => {
-        newsResponse.total = parseInt(data["totalResults"]);
-        newsResponse.news = this.getResponseArticles(data["articles"]);
+        newsResponse.total = parseInt((data as any).totalResults);
+        newsResponse.news = this.getResponseArticles((data as any).articles);
       });
 
     return newsResponse;
   }
 
   private formRequestUrl(searchParams: SearchParams) {
-    var baseUrl = "https://newsapi.org/v2/everything?apiKey=43ac62ab67ae45be8a8d60a659fc296f";
+    let baseUrl = 'https://newsapi.org/v2/everything?apiKey=43ac62ab67ae45be8a8d60a659fc296f';
 
-    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, "pageSize", String(searchParams.page * searchParams.perPage));
-    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, "q", searchParams.searchValue);
-    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, "sources", searchParams.source);
+    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, 'pageSize', String(searchParams.page * searchParams.perPage));
+    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, 'q', searchParams.searchValue);
+    baseUrl = this.getUrlWithNewRequestUrlParam(baseUrl, 'sources', searchParams.source);
 
     return baseUrl;
   }
 
   private getUrlWithNewRequestUrlParam(urlString: string, urlParam: string, urlParamValue: string) {
     if (urlParamValue) {
-      urlString += "&" + urlParam + "=" + urlParamValue;
+      urlString += '&' + urlParam + '=' + urlParamValue;
     }
     return urlString;
   }
 
   private getResponseArticles(data: any) {
-    var news = [] as News[];
+    const news = [] as News[];
 
     for (const item of data) {
-      let newsSourse: NewsSource = {
+      const newsSourse: NewsSource = {
         id: item.source.id,
         name: item.source.name
       };
 
-      let newsItem: News = {
+      const newsItem: News = {
         id: uuid(),
         source: newsSourse,
         author: item.author,
         title: item.title,
         description: item.description,
         url: item.url,
-        urlToImage: item.urlToImage,
+        urlToImage: item.urlToImage !== 'null' ? item.urlToImage : 'assets/news-default-image.jpg',
         publishedAt: item.publishedAt,
         content: item.content
-      }
-
+      };
       news.push(newsItem);
     }
 

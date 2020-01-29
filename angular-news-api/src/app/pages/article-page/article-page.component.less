@@ -1,0 +1,70 @@
+@import "../../constants.less";
+
+.app-news-data-container {
+  background-image: url("/assets/background.jpg");
+  background-size: cover;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.app-news-data {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 70%;
+
+  &__top-row {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__to-main,
+  &__read-full {
+    color: @blue;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  &__to-main, &__content {
+    margin-bottom: 20px;
+  }
+
+  &__image {
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    margin-right: 20px;
+
+    img {
+      height: 100%;
+      width: 355px;
+    }
+  }
+
+  &__title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &__additional-data {
+    display: flex;
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  &__chars-count,
+  &__time {
+    color: @dark-green;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  &__author {
+    color: @green;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

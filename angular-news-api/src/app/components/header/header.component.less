@@ -1,0 +1,65 @@
+@import "../../constants.less";
+
+.app-header {
+  &-top-row {
+    background-color: @grey;
+    padding: 10px;
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      width: 70%;
+
+      &-logo {
+        align-items: center;
+        color: @white;
+        display: flex;
+        font-size: 40px;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        img {
+          height: 35px;
+          margin-right: 10px;
+        }
+      }
+
+      &-login {
+        align-items: center;
+        color: @white;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+
+        button {
+          background-color: @green;
+          border: 0;
+          color: @white;
+          cursor: pointer;
+          margin-left: 15px;
+          padding: 10px 20px;
+          text-transform: uppercase;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &-bottom-row {
+    border-bottom: 10px solid @green;
+
+    &__content {
+        color: @grey;        
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0 auto;
+        padding: 30px 0;
+        width: 70%;
+        text-transform: uppercase;
+    }
+  }
+}

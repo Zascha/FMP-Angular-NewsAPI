@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'view/:id', component: ArticlePageComponent },
   { path: 'edit/:id', component: EditPageComponent },
-  { path: '404', component: NotFoundPageComponent},  
+  { path: 'create', component: EditPageComponent },
+  { path: '404', component: NotFoundPageComponent},
   { path: '**', redirectTo: '/404'}
 ];
 

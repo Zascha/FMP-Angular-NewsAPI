@@ -1,0 +1,76 @@
+@import "../../constants.less";
+
+.app-edit-news {
+  background-image: url("/assets/background.jpg");
+  background-size: cover;
+  min-height: 80vh;
+  padding: 20px;
+
+  .invalid-feedback {
+    font-style: italic;
+    color: @red;
+  }
+
+  &__to-main {
+    color: @blue;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+}
+
+.app-news-edit-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 70%;
+
+  &__control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+
+    &-header {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    &-input {
+      padding: 7px 10px;
+      margin-bottom: 10px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    textarea{
+        height: 150px;
+        resize: none;
+    }
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+
+    button {
+      padding: 7px 10px;
+      border: 0;
+      border-radius: 2px;
+      color: @white;
+    }
+
+    button[type="submit"] {
+      background-color: @green;
+      margin-right: 10px;
+    }
+
+    button[type="button"] {
+      background-color: @dark-green;
+    }
+  }
+}

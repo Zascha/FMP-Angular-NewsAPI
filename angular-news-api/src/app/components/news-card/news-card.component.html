@@ -1,5 +1,21 @@
-<div>
-    - {{news.id}}: {{news.title}} &nbsp;&nbsp;
-    <a routerLink="/edit/{{news.id}}">Edit</a> &nbsp; | &nbsp;
-    <a href (click)="deleteNews()" *ngIf="isAuthoredNews()">Delete</a>
+<div class="app-news-card">
+    <div class="app-news-card__image">
+        <img src="{{news.urlToImage}}" />
+    </div>
+    <div class="app-news-card__content">
+        <div class="app-news-card__title"> {{news.title}} </div>
+        <div class="app-news-card__additional-data">
+            <div class="app-news-card__chars-count"> {{ news.content | charsCount }} </div>
+            <div class="app-news-card__time"> {{ news.publishedAt |date: 'mediumDate' }}</div>
+        </div>
+        <div class="app-news-card__author"> {{news.author}}</div>
+        <div class="app-news-card__description"> {{ news.description }} </div>
+        <div class="app-news-card__read-link">
+            <a (click)="redirectToNewsViewPage()">Read</a>
+        </div>
+        <div *ngIf="isAuthoredNews()" class="app-news-card__buttons">
+            <a (click)="redirectToNewsEditPage()">Edit</a>
+            <a (click)="deleteNews()">Delete</a>
+        </div>
+    </div>
 </div>

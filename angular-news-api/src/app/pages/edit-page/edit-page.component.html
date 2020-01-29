@@ -1,3 +1,68 @@
 <div class="app-edit-news">
-    <app-news-edit-form [news]="news"></app-news-edit-form>
+    <div class="app-news-edit-form">
+        <form [formGroup]="newsEditForm" (ngSubmit)="saveNews()">
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Title *</div>
+                <input class="app-news-edit-form__control-input" type="text" placeholder="Enter news title"
+                    formControlName="newsTitle" />
+                <div class="invalid-feedback" *ngIf="submitted && newsEditForm.controls.newsTitle.errors?.required">
+                    Title is required
+                </div>
+            </div>
+
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Description</div>
+                <input class="app-news-edit-form__control-input" type="text" placeholder="Enter news description"
+                    formControlName="newsDescription" />
+            </div>
+
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Content *</div>
+                <textarea class="app-news-edit-form__control-input" type="text" placeholder="Enter news content"
+                    formControlName="newsContent">
+                </textarea>
+                <div class="invalid-feedback" *ngIf="submitted && newsEditForm.controls.newsContent.errors?.required">
+                    Content is required
+                </div>
+            </div>
+
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Url</div>
+                <input class="app-news-edit-form__control-input" type="text" placeholder="Enter news url"
+                    formControlName="newsUrl" />
+                <div class="invalid-feedback" *ngIf="submitted && newsEditForm.controls.newsUrl.errors?.pattern">
+                    Not valid news url
+                </div>
+            </div>
+
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Source Url</div>
+                <input class="app-news-edit-form__control-input" type="text" placeholder="Enter news source url"
+                    formControlName="newsSourceUrl" />
+                <div class="invalid-feedback" *ngIf="submitted && newsEditForm.controls.newsSourceUrl.errors?.pattern">
+                    Not valid news source url
+                </div>
+            </div>
+
+            <div class="app-news-edit-form__control">
+                <div class="app-news-edit-form__control-header">Image url</div>
+                <div>
+                    <input type="checkbox" (change)="invertUploadNewsImageFromLocal()" /> Upload image from
+                    local<br /><br />
+                </div>
+
+                <input class="app-news-edit-form__control-input" *ngIf="!uploadNewsImageFromLocal" type="text"
+                    placeholder="Enter news image url" formControlName="newsImgUrl" />
+
+                <input class="app-news-edit-form__control-input" *ngIf="uploadNewsImageFromLocal" type="file"
+                    accept="image/*" formControlName="newsImgUrl" (change)="showUploadedImagePreview($event)" />
+                <img *ngIf="newsImageUrl != null" [src]="newsImageUrl" width="300px" height="auto"><br />
+            </div>
+            <div class="app-news-edit-form__buttons">
+                <button type="submit"> Save</button>
+                <button type="button" (click)="resetNews()"> Reset</button>
+            </div>
+        </form>
+        <a class="app-edit-news__to-main" [routerLink]="['/']">Go to Main</a>
+    </div>
 </div>

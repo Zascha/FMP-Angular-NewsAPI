@@ -1,0 +1,44 @@
+@import '../../constants.less';
+
+.app-news-list{
+    align-items: center;
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+
+    &__content{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 70%;
+    }
+
+    &__load-more{
+        background-color: @green;
+        border: 0;
+        color: @white;
+        cursor: pointer;
+        font-size: 20px;
+        margin: 20px 0;
+        padding: 10px;
+        text-transform: uppercase;
+        width: 70%;
+
+        &:focus {
+            outline: 0;
+          }
+    }
+
+    &__no-news{
+        background-color: rgba(256, 256, 256, 0.95);
+        border-radius: 2px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 300px 0;
+        margin-bottom: 20px;
+    }
+}

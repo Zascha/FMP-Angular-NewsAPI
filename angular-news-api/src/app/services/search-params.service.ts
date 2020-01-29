@@ -14,12 +14,10 @@ export class SearchParamsService {
   }
 
   setNewsSearhParams(params: SearchParams) {
-    console.log("setNewsSearhParams is called", params);
     this.searchParams.next(params);
   }
 
   getUpdatedNewsSearchParams(): Observable<any> {
-    console.log("getUpdatedNewsSearchParams is called");
     return this.searchParams.asObservable();
   }
 }

@@ -1,1 +1,32 @@
-<p>article-page works!</p>
+<div class="app-news-data-container">
+    <div class="app-news-data">
+        <div class="app-news-data__top-row">
+            <div class="app-news-data__image">
+                <img src="{{news.urlToImage}}" />
+            </div>
+            <div class="app-news-data__content">
+                <a class="app-news-data__to-main" [routerLink]="['/']"> Go to Main</a>
+                <div class="app-news-data__title"> {{news.title}} </div>
+                <div class="app-news-data__additional-data">
+                    <div class="app-news-data__chars-count"> {{ news.content | charsCount }} </div>
+                    <div class="app-news-data__time"> {{ news.publishedAt |date: 'mediumDate' }}</div>
+                </div>
+                <div class="app-news-data__author"> {{news.author}}</div>
+            </div>
+        </div>
+        <div class="app-news-data__content">
+            {{news.content}}<br/><br/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. <br/><br/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+        </div>
+        <a class="app-news-data__read-full" href="{{news.url}}">Read full version </a>
+    </div>
+</div>

@@ -1,6 +1,5 @@
-import { News } from './interfaces/news';
-
 export class Constants {
-    NotAuthorizedUserId: number = -1;
-    DefaultPerPageItemsNumber: number = 20;
+    NotAuthorizedUserId = -1;
+    DefaultAuthoredUserFullName = 'Aliaksandra Zakharava';
+    DefaultPerPageItemsNumber = 5;
 }

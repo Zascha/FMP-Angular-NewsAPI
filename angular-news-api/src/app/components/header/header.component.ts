@@ -20,22 +20,23 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  isUserAuthorized(){
+  isUserAuthorized() {
     return this.userService.isAnyUserAuthorized();
   }
 
-  logInOrOut(){
-    if(!this.userService.isAnyUserAuthorized()){
+  logInOrOut() {
+    if (!this.userService.isAnyUserAuthorized()) {
       this.userService.logIn();
-      console.log("Logged in");
-    }
-    else{
+    } else {
       this.userService.logOut();
-      console.log("Logged out");
     }
   }
 
-  getlogInOrOutText(){
-    return this.userService.isAnyUserAuthorized() ? "Log out" : "Log in";
+  getlogInOrOutText() {
+    return this.userService.isAnyUserAuthorized() ? 'Log out' : 'Log in';
+  }
+
+  getCurrentUserFullName() {
+    return this.userService.isAnyUserAuthorized() ? this.userService.getCurrentUserFullName() : '';
   }
 }

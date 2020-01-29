@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsEditFormComponent } from './news-edit-form.component';
+import { StandardButtonComponent } from './standard-button.component';
 
-describe('NewsEditFormComponent', () => {
-  let component: NewsEditFormComponent;
-  let fixture: ComponentFixture<NewsEditFormComponent>;
+describe('StandardButtonComponent', () => {
+  let component: StandardButtonComponent;
+  let fixture: ComponentFixture<StandardButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsEditFormComponent ]
+      declarations: [ StandardButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewsEditFormComponent);
+    fixture = TestBed.createComponent(StandardButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

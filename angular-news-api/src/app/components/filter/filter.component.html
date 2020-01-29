@@ -1,16 +1,25 @@
 <div class="app-filter">
-    
     <form [formGroup]="filterForm" class="app-filter-form">
-        <select formControlName="filterSources" (change)="notifySearchParamsHaveChanged()">
-            <option *ngFor="let source of newsSources" value={{source.id}}>{{source.name}}</option>
-        </select>
-
-        <input placeholder="Enter your text" formControlName="filterValue" />
-        <button type="button" (click)="notifySearchParamsHaveChanged()">Filter</button>
-
-        <input *ngIf="canFilterByAuthored()" type="checkbox" formControlName="filterAuthored" (change)="notifySearchParamsHaveChanged()" checked=false> 
-        <span *ngIf="canFilterByAuthored()"> Only Authored </span>
-
-        <button>Add Article</button>
+        <div class="app-filter-form__controls">
+            <div class="app-filter-form__control">
+                <select class="app-filter-form__control" formControlName="filterSources"
+                    (change)="notifySearchParamsHaveChanged()">
+                    <option *ngFor="let source of newsSources" value={{source.id}}>{{source.name}}</option>
+                </select>
+            </div>
+            <div class="app-filter-form__control">
+                
+                <input type="text" placeholder="Enter your text" formControlName="filterValue" />
+                <button type="button" (click)="notifySearchParamsHaveChanged()">Filter</button>
+            </div>
+            <div *ngIf="canFilterByAuthored()" class="app-filter-form__control app-filter-form__control--checkbox">
+                <div class="checkbox-decorator">
+                    <img *ngIf="isAuthoredChecked()" src="assets/tick.svg"/>
+                </div>
+                <input type="checkbox" formControlName="filterAuthored" (change)="notifySearchParamsHaveChanged()" checked=false>
+                <span> Authored </span>
+            </div>
+        </div>
+        <a class="app-filter-form__button" *ngIf="canFilterByAuthored()" routerLink="/create">Add Article</a>
     </form>
 </div>

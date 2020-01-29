@@ -1,13 +1,22 @@
 <div class="app-header">
     <div class="app-header-top-row">
-        HEADER TOP ROW
-        <button (click)="logInOrOut()">
-            <span>{{isUserAuthorized() ? 'Log out' : 'Log in'}}</span>
-        </button>
+        <div class="app-header-top-row__content">
+            <div class="app-header-top-row__content-logo">
+                <img src="assets/news.svg" /> News
+            </div>
+            <div class="app-header-top-row__content-login">
+                <span *ngIf="isUserAuthorized()">
+                    Hello, {{getCurrentUserFullName()}}
+                </span>
+                <button (click)="logInOrOut()">
+                    <span>{{isUserAuthorized() ? 'Log out' : 'Log in'}}</span>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="app-header-bottom-row">
-       <span>-------------------------</span>
-       {{pageTitle}}
-       <span>-------------------------</span>
-    </div> 
+        <div class="app-header-bottom-row__content">
+            {{ pageTitle }}
+        </div>
+    </div>
 </div>

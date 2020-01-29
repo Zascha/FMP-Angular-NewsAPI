@@ -11,8 +11,6 @@ export class NewsSourceProviderService {
   constructor(private httpClient: HttpClient) {
     this.sources = [];
     this.initNewsSources();
-
-    console.log(this.sources);
   }
 
   getNewsSources() {
@@ -20,11 +18,11 @@ export class NewsSourceProviderService {
   }
 
   private initNewsSources() {
-    var baseUrl = "https://newsapi.org/v2/sources?apiKey=43ac62ab67ae45be8a8d60a659fc296f";
+    const baseUrl = 'https://newsapi.org/v2/sources?apiKey=43ac62ab67ae45be8a8d60a659fc296f';
 
     this.httpClient.get(baseUrl).subscribe((response: Response) => {
-      for (const item of (response["sources"] as any)) {
-        let newsSourse: NewsSource = {
+      for (const item of (response as any).sources) {
+        const newsSourse: NewsSource = {
           id: item.id,
           name: item.name
         };
