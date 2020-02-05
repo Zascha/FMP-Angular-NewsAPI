@@ -21,7 +21,6 @@ export class NewsListComponent implements OnInit {
   currentPage: number;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
     private newsService: NewsService,
     private localNewsService: LocalNewsService,
     private newsSearchParamsService: SearchParamsService,
@@ -39,9 +38,11 @@ export class NewsListComponent implements OnInit {
   }
 
   loadNews(searchParams: SearchParams) {
-    this.newsData = searchParams.authored
-    ? this.localNewsService.getLocalNewsByUserId(this.userService.getCurrentUserId().toString(), searchParams)
-    : this.newsService.getNewsList(searchParams);
+    if (searchParams.authored) {
+      this.newsData = this.localNewsService.getLocalNewsByUserId(this.userService.getCurrentUserId().toString(), searchParams);
+    } else {
+      this.newsService.getNewsList(searchParams).subscribe(data => this.newsData = data);
+    }
   }
 
   loadMoreNews() {

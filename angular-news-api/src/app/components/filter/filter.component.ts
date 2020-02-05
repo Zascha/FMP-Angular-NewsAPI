@@ -34,8 +34,8 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newsSources = this.newsSourceProviderService.getNewsSources();
     this.headerTitleService.setTitle('Live News Column');
+    this.newsSourceProviderService.getNewsSources().subscribe(data => this.newsSources = data);
 
     this.notifySearchParamsHaveChanged();
   }

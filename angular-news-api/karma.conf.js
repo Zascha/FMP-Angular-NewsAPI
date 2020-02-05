@@ -7,20 +7,36 @@ module.exports = function (config) {
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
+      require('karma-coverage'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false 
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/angular-news-api'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+       dir: require('path').join(__dirname, './coverage'),
+       reports: ['html', 'lcovonly', 'text-summary'],
+       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    files: [
+      'src/**/*.ts'
+    ],
+    reporters: ['progress', 'kjhtml', 'coverage'],
+    preprocessors: {
+     'src/app/app.component.ts': 'coverage',
+     'src/app/components/*.ts': 'coverage',
+     'src/app/pages/*.ts': 'coverage',
+     'src/app/pipes/*.ts': 'coverage',
+     'src/app/services/*.ts': 'coverage',
+     'src/app/shared/*.ts': 'coverage',
+    },
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

@@ -19,7 +19,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('FooterComponent: should create', () => {
+     expect(component).toBeTruthy();
   });
 });

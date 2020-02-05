@@ -22,7 +22,7 @@ export class NewsCardComponent implements OnInit {
   ngOnInit() { }
 
   isAuthoredNews() {
-    return this.news.author === this.userService.getCurrentUserId().toString();
+    return parseInt(this.news.author) === this.userService.getCurrentUserId();
   }
 
   deleteNews() {

@@ -11,11 +11,11 @@ export class NewsStateService {
     this.news = [];
    }
 
-   pushToState(news: News){
+   pushToState(news: News) {
     this.news.push(news);
    }
 
-   getFromState(newsId: string){
+   getFromState(newsId: string) {
     const newsToGet = this.news.filter(news => news.id === newsId);
     return newsToGet.length > 0 ? newsToGet[0] : null;
    }

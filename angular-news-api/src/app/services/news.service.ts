@@ -7,6 +7,8 @@ import { NewsSource } from '../interfaces/news-source';
 import { NewsResponse } from '../interfaces/news-response';
 
 import { v4 as uuid } from 'uuid';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +17,18 @@ export class NewsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getNewsList(searchParams: SearchParams) {
-    const newsResponse = new NewsResponse();
-    this.httpClient.get(this.formRequestUrl(searchParams))
-      .subscribe(data => {
-        newsResponse.total = parseInt((data as any).totalResults);
-        newsResponse.news = this.getResponseArticles((data as any).articles);
-      });
-
-    return newsResponse;
+  getNewsList(searchParams: SearchParams): Observable<NewsResponse> {
+    const requestUrl = this.formRequestUrl(searchParams);
+    console.log('requestUrl', requestUrl);
+    return this.httpClient.get(requestUrl)
+    .pipe(
+      map((response: Response) => {
+        const item = (response as any);
+        return {
+          total: parseInt(item.totalResults),
+          news: this.getResponseArticles(item.articles)
+        };
+      }));
   }
 
   private formRequestUrl(searchParams: SearchParams) {

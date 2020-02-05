@@ -6,7 +6,7 @@
         <div class="app-news-card__title"> {{news.title}} </div>
         <div class="app-news-card__additional-data">
             <div class="app-news-card__chars-count"> {{ news.content | charsCount }} </div>
-            <div class="app-news-card__time"> {{ news.publishedAt |date: 'mediumDate' }}</div>
+            <div class="app-news-card__time"> {{ news.publishedAt }}</div>
         </div>
         <div class="app-news-card__author"> {{news.author}}</div>
         <div class="app-news-card__description"> {{ news.description }} </div>

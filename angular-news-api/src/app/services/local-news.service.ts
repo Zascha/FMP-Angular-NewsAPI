@@ -14,7 +14,6 @@ export class LocalNewsService {
   private localNewsStorage: News[] = [];
 
   constructor(
-    private constants: Constants,
     private userService: UserService) { }
 
   getLocalNewsById(userId: string, newsId: string) {
@@ -49,6 +48,7 @@ export class LocalNewsService {
     news.author = this.userService.getCurrentUserId().toString();
     news.publishedAt = this.getNowDateTime();
     this.localNewsStorage.push(news);
+    return news;
   }
 
   updateLocalNews(news: News) {
@@ -57,7 +57,7 @@ export class LocalNewsService {
   }
 
   deleteLocalNews(newsId: string) {
-    this.localNewsStorage = this.localNewsStorage.filter(x => x.id === newsId);
+    this.localNewsStorage = this.localNewsStorage.filter(x => x.id !== newsId);
   }
 
   private getNowDateTime() {

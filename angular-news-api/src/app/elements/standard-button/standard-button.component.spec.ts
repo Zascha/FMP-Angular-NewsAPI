@@ -19,7 +19,7 @@ describe('StandardButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('StandardButtonComponent: should create', () => {
     expect(component).toBeTruthy();
   });
 });
